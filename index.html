@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Saber: Onramp SDK Docs</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b1f4f86d-0fd1-4b8d-8f35-42dbae77561e" class="page sans"><header><h1 class="page-title">Saber: Onramp SDK Docs</h1><p class="page-description"></p></header><div class="page-body"><h1 id="557715b6-f8b2-41e2-86ff-af3a0d329476" class="">User Flow</h1><p id="6b77b015-b8af-426b-8557-8ce3d38a9188" class="">The user needs to follow a series of steps on the client platform to purchase crypto as given below:</p><figure id="d787ea6d-f1b6-424e-84fc-eff90f26f1d6" class="image"><a href="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/User_flow_(3).png"><img style="width:1887px" src="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/User_flow_(3).png"/></a></figure><h1 id="b28f8fcf-51c1-49ff-a7f8-09706f7184dc" class="">Onramp Hosted SDK</h1><p id="3ab69b23-26b6-4c37-9346-894781368612" class="">Saber’s Hostel SDK can be integrated by following the below mentioned steps. The integration is done in two steps:</p><ul id="40283dc5-d586-4008-bfac-fdab0f5c5cd0" class="bulleted-list"><li style="list-style-type:disc">Sandbox Testing: Initial testing of integration</li></ul><ul id="98f9a675-3a65-4c99-a874-59fb3c6758c1" class="bulleted-list"><li style="list-style-type:disc">Production: Final integration for going live</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1237a051-cfa7-4a7d-afbc-4ea174bbc083"><div style="font-size:1.5em"><span class="icon">❓</span></div><div style="width:100%">Note:<ul id="4991194f-a05d-4fcf-8c1d-4a875b22270d" class="bulleted-list"><li style="list-style-type:disc">You can obtain the Sandbox and Production Credentials from Mudrex Team</li></ul><ul id="e2194525-4e24-452d-b11d-45c6638ebb55" class="bulleted-list"><li style="list-style-type:disc">In <strong>Sandbox Testing</strong>:<ul id="ea459a19-2609-446c-9b00-97e7d5147f6d" class="bulleted-list"><li style="list-style-type:circle">real money testing is not allowed</li></ul><ul id="a8d681fe-f702-40df-a53e-ccf7010ec00f" class="bulleted-list"><li style="list-style-type:circle">dummy account is not present, testing should be done by creating a real account</li></ul></li></ul></div></figure><p id="1bbff48e-0116-49c2-acc9-a626e551ed1b" class="">The steps to integrate are SDK are highlighted below:</p><figure id="9590c4c5-3cd4-4efd-8c4f-e8367cc60d2c" class="image"><a href="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/SDK_Overview.png"><img style="width:2001px" src="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/SDK_Overview.png"/></a></figure><p id="da00b932-8213-4ec1-89c5-485c35ac2e9a" class="">The overall integration includes two major areas:</p><ol type="1" id="cd00e488-e0b5-4972-b00e-458a7cfbfa14" class="numbered-list" start="1"><li><strong>User Registration</strong>: Creation of user on Mudrex’s system and generate a UUID for the user for payment processing</li></ol><ol type="1" id="fb4887aa-9b92-4f41-9919-5033f6f63511" class="numbered-list" start="2"><li><strong>Payment Initiation</strong>: Generation of URL for payment where the user needs to be redirected for Onramp</li></ol><h2 id="5e3c7a9e-2be7-43c3-8b14-1772c114ed34" class="">User Registration</h2><p id="84c398c0-1868-40b4-9529-48969f0c4fc3" class="">The user registration part contains the following steps:</p><figure id="22b39978-e86a-48e5-824e-0bfccaecaa94" class="image"><a href="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/User_Reg.png"><img style="width:1200px" src="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/User_Reg.png"/></a></figure><h3 id="da756501-59df-46b5-b58f-12870bc794a9" class="">Steps to Register a User</h3><p id="6d364308-b82e-4b01-890a-2b7156aecbdf" class="">To be able to make payments a user has to be first registered with Mudrex. To register a user on Mudrex you need to follow the steps:</p><ol type="1" id="4f6b0a62-ed67-413e-9217-f46e80585d0b" class="numbered-list" start="1"><li><span style="border-bottom:0.05em solid"><strong>Generate a secret key</strong></span> for user registration using the following script</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f18f0e8f-5f1c-4c28-bc72-125bff75ce6c" class="code"><code class="language-JavaScript">var timestamp = Math.floor(Date.now() / 1000).toString();
+var sigString = clientId + timeInSeconds;
+var secret = CryptoJS.HmacSHA256(sigString, clientSecrect).toString().toUpperCase();</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1a049257-4d57-42d5-99fb-30d80e47885b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">The <code>clientId</code> and <code>clientSecrect</code> will be shared by the Mudrex team</div></figure><ol type="1" id="5370ac3c-09bb-4c0b-93fb-40eaf8a7fbd6" class="numbered-list" start="2"><li>Use this<span style="border-bottom:0.05em solid"><strong> API endpoint to register a user</strong></span></li></ol><table id="3e934827-945a-4b9c-89a1-bfb1f9efb74b" class="simple-table"><thead class="simple-table-header"><tr id="cdb0bb6a-661a-4176-9f36-dde01f8d6c85"><th id="vmUh" class="simple-table-header-color simple-table-header" style="width:146px"><strong>Method</strong></th><th id="KKqu" class="simple-table-header-color simple-table-header" style="width:528.484375px"><strong>URL</strong></th></tr></thead><tbody><tr id="06216f53-a9b8-4fca-9943-2a3c8fce4e88"><td id="vmUh" class="" style="width:146px"><code><strong>POST</strong></code></td><td id="KKqu" class="" style="width:528.484375px">{base_url}/api/v1/user/client_user</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="789c3698-ceac-4238-b4c0-fb5bdb10ba67"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%">Base URL (Staging): <a href="https://sandbox.mudrex.com/">https://sandbox.mudrex.com</a><p id="73581c74-f053-4e5e-a0f5-70e2b78f2aa2" class="">Base URL (Production): <a href="https://staging.caas-sdk.mudrex.com/onramp">https://mudrex.com</a></p></div></figure><table id="efac4285-c266-4aa1-9b93-8638076b9791" class="simple-table"><thead class="simple-table-header"><tr id="7ef4c09c-4860-4151-82f0-cc639fd6f1b9"><th id="Of&lt;]" class="simple-table-header-color simple-table-header"><strong>Headers</strong></th><th id="k_\W" class="simple-table-header-color simple-table-header" style="width:374px">Description</th><th id="]Mok" class="simple-table-header-color simple-table-header"><strong>Values</strong></th></tr></thead><tbody><tr id="2d61476a-d7b5-44b9-8108-233e9381bb98"><td id="Of&lt;]" class=""><code>X-Timestamp</code></td><td id="k_\W" class="" style="width:374px">Timestamp used to generate the secret</td><td id="]Mok" class="">string</td></tr><tr id="36104a72-5c9a-4965-92ba-7c3dd7174360"><td id="Of&lt;]" class=""><code>X-Client-Id</code></td><td id="k_\W" class="" style="width:374px">Client ID provided by Mudrex</td><td id="]Mok" class="">string</td></tr><tr id="7bf5477e-823b-4114-8347-8314d78dc370"><td id="Of&lt;]" class=""><code>X-Secret-Key</code></td><td id="k_\W" class="" style="width:374px">The secret key generated in the first step</td><td id="]Mok" class="">string</td></tr><tr id="f54e3ddd-7e8e-44f7-946e-83ed7e29e5d4"><td id="Of&lt;]" class=""><code>X-Request-Id</code></td><td id="k_\W" class="" style="width:374px">For client reference (can be anything)</td><td id="]Mok" class="">string</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="630c00fb-4dc1-4348-8329-c20caa6a6144"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">The User UUID is generated as a response to the request. The client can also furnish a User UUID and other user data if present already</div></figure><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Sample Request and Response</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="74bcfe24-bb04-4e9a-9bd5-2dafd8989ff6" class="code"><code class="language-JavaScript">curl --location &#x27;https://mudrex.com/api/v1/user/client_user&#x27; \
+--header &#x27;X-Timestamp: {{timestamp}}&#x27; \
+--header &#x27;X-Client-Id: •••••••&#x27; \
+--header &#x27;X-Secret-Key: •••••••&#x27; \
+--header &#x27;X-Request-Id: 123456789876&#x27; \
+--data-raw &#x27;{
+    &quot;user_uuid&quot;: &quot;77c4562e-ce47-4054-9d4e-4df69ca61ac2&quot;,
+    &quot;client_user_id&quot;: &quot;Abhishek-TestAcc&quot;,
+    &quot;email&quot;: &quot;kk@mail1.com&quot;,
+    &quot;phone&quot;:&quot;8734567891&quot;
+}&#x27;</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e9b31031-c038-4d7e-ae46-c94a57cbf5ff"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><code>data-raw</code> parameters are optional</div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e7ee48de-6dbd-4bbc-9a2f-fee0a92aa12b" class="code"><code class="language-JavaScript">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;client_user_id&quot;: &quot;&quot;,
+        &quot;user_id&quot;: &quot;d57626e7-d6f3-44e0-bc82-12c5f42843af&quot;
+    }
+}</code></pre></div></details><h2 id="585d8698-d783-48ee-ba73-b50e73f7545f" class="">Payment Initiation</h2><p id="903b62ee-76ba-42a9-856d-9eaece712098" class="">Post user registration, URL needs to be generated for payment where the user will be redirected</p><figure id="010216a9-7c2f-4a6e-b7f1-189e6ad96d84" class="image"><a href="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/Payment_(1).png"><img style="width:2033px" src="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/Payment_(1).png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cfd3be85-517b-4e54-b6fb-48a99b63b7c2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>KYC Sharing<br/><br/></strong>If the user has already completed KYC with the client, the existing KYC can be shared with Mudrex. The steps can be found <a href="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e.html">here</a> under KYC Sharing tab.</div></figure><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Quote API</summary></details><h3 id="114a0c9e-a254-4e11-8015-f3776767cb04" class="">Steps to Initiate Payment</h3><p id="188f8801-931f-4d09-8a00-7a687f1bb375" class="">To generate a payment URL for the user where he must be redirected, follow these steps:</p><ol type="1" id="74ef172b-9b92-48f2-8c2d-433809fbde83" class="numbered-list" start="1"><li><span style="border-bottom:0.05em solid"><strong>Generate a secret key</strong></span> for payment using the following script. Please note that this script is slightly different from the one used at the time of user registration</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a103a142-b431-4aec-a9d0-df436f3c91c5" class="code"><code class="language-JavaScript">var timestamp = Math.floor(Date.now() / 1000).toString();
+var sigString = clientId + timeInSeconds + &quot;sdk&quot; + user_id;
+var secret = CryptoJS.HmacSHA256(sigString, clientSecrect).toString().toUpperCase();</code></pre><ol type="1" id="d006e9cb-fd9e-4a5c-8e07-aed2604acc90" class="numbered-list" start="2"><li><span style="border-bottom:0.05em solid"><strong>Pass the following parameters as URL </strong></span>params to the base payment URL</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f398bafb-eaa6-44c9-a0a4-da7b429d3d91"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%">Base URL (Sandbox): <a href="https://staging.caas-sdk.mudrex.com/onramp">https://app.sandbox.saber.money/onramp</a><p id="357ff41d-8eae-407f-93a2-07187008b901" class="">Base URL (Production):<a href="https://staging.caas-sdk.mudrex.com/onramp">https://app.saber.money/onramp</a></p></div></figure><table id="7a2fa2d4-2d48-4696-91e0-b205f87c0015" class="simple-table"><thead class="simple-table-header"><tr id="ac3f8b60-5a3f-4955-a83d-71080f4aa0e1"><th id="^ji_" class="simple-table-header-color simple-table-header"><strong>Parameters</strong></th><th id="ZCoi" class="simple-table-header-color simple-table-header" style="width:564px"><strong>Description</strong></th><th id="nb^}" class="simple-table-header-color simple-table-header" style="width:525px"><strong>Sample Value</strong></th></tr></thead><tbody><tr id="26417f6f-c830-4790-9d2b-aea2622ac646"><td id="^ji_" class=""><code>client_id</code></td><td id="ZCoi" class="" style="width:564px">Client ID provided by Mudrex</td><td id="nb^}" class="" style="width:525px">d951b040-ecb0-432b-ae3c-2ae7d2d19987</td></tr><tr id="6ed8a707-8275-4d77-a3cd-6a77e38fe312"><td id="^ji_" class=""><code>user_id</code></td><td id="ZCoi" class="" style="width:564px">A UUIDv4 unique identifier for the user-generated by the client during user registration</td><td id="nb^}" class="" style="width:525px">d951b040-ecb0-432b-ae3c-2ae7d2d19987</td></tr><tr id="81ee84a4-d9ca-4ceb-be72-04de80c62183"><td id="^ji_" class=""><code>timestamp</code></td><td id="ZCoi" class="" style="width:564px">The timestamp of the payment request (used at the time of creating the secret)</td><td id="nb^}" class="" style="width:525px">1687276964</td></tr><tr id="723f7bf9-b336-4604-ae12-51933ef97607"><td id="^ji_" class=""><code>secret</code></td><td id="ZCoi" class="" style="width:564px">The secret generated by the client in previous step to authenticate the request</td><td id="nb^}" class="" style="width:525px">CE1B5BD087BA408C2AFF01B00595007858DF496D3468CE3307CB1A7966DDC265</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0126bd31-d388-4496-a07f-0df96768a0ea"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Note: The generated payment URL expires after <strong>10 minutes</strong></div></figure><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>Sample URL</strong></summary><div class="indented"><p id="7d39a37f-dfd4-4904-b930-b78a02414218" class=""><code><a href="https://staging.caas-sdk.mudrex.com/onramp">https://app.sandbox.saber.money/onramp</a></code><code><a href="https://caas-sdk.mudrex.com/onramp?client_id=d951b040-ecb0-432b-ae3c-2ae7d2d19987&amp;user_id=d951b040-ecb0-432b-ae3c-2ae7d2d1998&amp;timestamp=1687276964&amp;secret=CE1B5BD087BA408C2AFF01B00595007858DF496D3468CE3307CB1A7966DDC265">?client_id=d951b040-ecb0-432b-ae3c-2ae7d2d19987&amp;user_id=d951b040-ecb0-432b-ae3c-2ae7d2d1998&amp;timestamp=1687276964&amp;secret=CE1B5BD087BA408C2AFF01B00595007858DF496D3468CE3307CB1A7966DDC265</a></code></p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Payment <span style="border-bottom:0.05em solid">URL Customization</span></summary><div class="indented"><p id="f2cdef57-0419-4152-a326-e63d649419db" class="">If you wish to customize the integration with Mudrex Onramp, you can <span style="border-bottom:0.05em solid"><strong>add query parameters</strong></span> to the URL. This allows you to set specific options according to your requirements. <em>Check sample URL for example.</em></p><table id="60755f66-19ff-4152-ad13-e4a0782fb96c" class="simple-table"><thead class="simple-table-header"><tr id="6fcbe267-b0c9-46d2-9e90-9434f4049f2e"><th id="\CD=" class="simple-table-header-color simple-table-header" style="width:128px"><strong>Parameters</strong></th><th id="LaUo" class="simple-table-header-color simple-table-header" style="width:700px"><strong>Description</strong></th><th id="bi_e" class="simple-table-header-color simple-table-header" style="width:280.828125px"><strong>Sample Value</strong></th></tr></thead><tbody><tr id="7e01c632-b382-40bd-8546-5c48d7fe0ff2"><td id="\CD=" class="" style="width:128px"><code>crypto_symbol</code></td><td id="LaUo" class="" style="width:700px">This is the unique identifier of the cryptocurrency. Currently, we support <strong>USDT</strong></td><td id="bi_e" class="" style="width:280.828125px">USDT</td></tr><tr id="4f6bbf14-62d1-4f29-b902-2cb3056e1f76"><td id="\CD=" class="" style="width:128px"><code>network</code></td><td id="LaUo" class="" style="width:700px">This is the network on which you want to withdraw the cryptocurrency. Currently supported networks include:<br/><br/><strong>BSC, BNB, ETH, MATIC TRX, ARB</strong></td><td id="bi_e" class="" style="width:280.828125px">MATIC</td></tr><tr id="a96dc3d5-2460-4341-b4bc-69f924bd83a1"><td id="\CD=" class="" style="width:128px"><code>wallet_address</code></td><td id="LaUo" class="" style="width:700px">This is the on-chain wallet address to which the cryptocurrency will be withdrawn.</td><td id="bi_e" class="" style="width:280.828125px">0x5ccff9cf986079c6d6f2187c3dc4bd9ba9834a9k</td></tr><tr id="44185aa4-ef3a-4dd3-8a32-8be2a3734054"><td id="\CD=" class="" style="width:128px"><code>crypto_amount</code></td><td id="LaUo" class="" style="width:700px">This is the amount denoted in the native coin/token. Please note that either crypto_amount or fiat_amount can be passed, and if both are provided, fiat_amount takes precedence.</td><td id="bi_e" class="" style="width:280.828125px">100</td></tr><tr id="0222e92d-e608-411d-8b02-a6db1bf0d85f"><td id="\CD=" class="" style="width:128px"><code>fiat_amount</code></td><td id="LaUo" class="" style="width:700px">This is the amount denoted in fiat currency (currently only INR is supported).</td><td id="bi_e" class="" style="width:280.828125px">10000</td></tr><tr id="ec388ef7-75ec-4624-a7f5-d913cf266b16"><td id="\CD=" class="" style="width:128px"><code>payment_method</code></td><td id="LaUo" class="" style="width:700px">The type of method the user would choose to pay with.<br/>Supported payment methods:<br/>- bank_transfer<br/>- upi_transfer<br/></td><td id="bi_e" class="" style="width:280.828125px">bank_transfer</td></tr><tr id="02ed5cca-ccc9-4f1a-8dd0-c2daff8f1945"><td id="\CD=" class="" style="width:128px"><code>transaction_id</code></td><td id="LaUo" class="" style="width:700px">A UUID16 identifier passed by the client (optional). The client will receive webhooks with same transaction_id</td><td id="bi_e" class="" style="width:280.828125px"></td></tr><tr id="62e4b66b-4620-447d-8576-b1dbc3745218"><td id="\CD=" class="" style="width:128px"><code>fiat_currency</code></td><td id="LaUo" class="" style="width:700px">This is the fiat currency the user wants to pay (currently only INR is supported).</td><td id="bi_e" class="" style="width:280.828125px">INR</td></tr><tr id="673fd1fd-4fc3-4a10-b03e-aa074d9758bf"><td id="\CD=" class="" style="width:128px"><code>redirect_url</code></td><td id="LaUo" class="" style="width:700px">This is the URL to which the user will be redirected after a successful transaction. This parameter is applicable only in hosted mode.</td><td id="bi_e" class="" style="width:280.828125px"></td></tr></tbody></table></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Webhooks</summary><div class="indented"><p id="7d5c37a8-35eb-484b-99f3-dd0b55625c9b" class="">The following webhooks can be received by the client for obtaining status of the order as given below:</p><table id="642829b8-5b85-496d-b69e-3d42d11c67b2" class="simple-table"><thead class="simple-table-header"><tr id="a91b92ed-d21a-49a2-8f84-c46a47447aa6"><th id="{hY&lt;" class="simple-table-header-color simple-table-header"><strong>Status</strong></th><th id="MQF&gt;" class="simple-table-header-color simple-table-header" style="width:335px"><strong>Description</strong></th><th id="&gt;GeN" class="simple-table-header-color simple-table-header" style="width:589px"><strong>Sample Value</strong></th></tr></thead><tbody><tr id="aa410282-a92a-4c91-b09b-ebeca8a91662"><td id="{hY&lt;" class=""><code><strong>‘CREATED’</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered when the user confirms to have made the payment (click on ‘I have transferred’ CTA)</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;failure_code&#x27;: None, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;exchange_rate&#x27;: &#x27;85.00000000&#x27;, &#x27;status&#x27;: </code><code><strong>&#x27;CREATED&#x27;</strong></code><code>, &#x27;id&#x27;: &#x27;146b37f1-26b5-411d-ae49-a4b6d3aa17f3&#x27;, &#x27;network&#x27;: &#x27;BSC&#x27;, &#x27;fiat_amount&#x27;: &#x27;850.00000000&#x27;, &#x27;crypto_wallet_address&#x27;: &#x27;0xe7cdF59Db5202f970607E19dd9921A711D377Afc&#x27;, &#x27;tag&#x27;: None, &#x27;failure_desc&#x27;: None, &#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;crypto_amount&#x27;: &#x27;10.00000000&#x27;, &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;created_at&#x27;: 1702540033000, &#x27;source_id&#x27;: &#x27;37f7cfcb-4890-471d-9f37-aa762db3eba9&#x27;, &#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;, &#x27;user_id&#x27;: &#x27;7970d2d2-401b-4322-9672-c03f051dedc0&#x27;}</code></td></tr><tr id="30b20518-9e74-49d0-9448-1cb1776d06bf"><td id="{hY&lt;" class=""><code><strong>&#x27;ONRAMP_INITIATED&#x27;</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered immediately once the payment reconciliation process is triggered.</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;source_id&#x27;: None, &#x27;tag&#x27;: None, &#x27;exchange_rate&#x27;: &#x27;84.99000000&#x27;, &#x27;failure_code&#x27;: None, &#x27;fiat_amount&#x27;: &#x27;2299.00000000&#x27;, &#x27;created_at&#x27;: 1694714157000, &#x27;id&#x27;: &#x27;e4606ddb-8e63-4822-8be9-4698bb14174c&#x27;, &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;failure_desc&#x27;: None, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;network&#x27;: &#x27;MATIC&#x27;, &#x27;crypto_wallet_address&#x27;: &#x27;0x466fA637cEB624F9d14fC470c509a818410768FD&#x27;, &#x27;crypto_amount&#x27;: &#x27;27.05000000&#x27;, </code><code><strong>&#x27;status&#x27;: &#x27;ONRAMP_INITIATED&#x27;, &#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;</strong></code><code>, &#x27;user_id&#x27;: &#x27;11030590-8f27-4325-8db6-c3bb38ba4bf3&#x27;}</code></td></tr><tr id="a0ac481c-d894-4ed9-b428-3a47707dc0e8"><td id="{hY&lt;" class=""><code><strong>&#x27;ONRAMP_COMPLETED&#x27;</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered when the user’s payment is successfully reconciled.</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;source_id&#x27;: None, &#x27;tag&#x27;: None, &#x27;exchange_rate&#x27;: &#x27;84.99000000&#x27;, &#x27;failure_code&#x27;: None, &#x27;fiat_amount&#x27;: &#x27;2299.00000000&#x27;, &#x27;created_at&#x27;: 1694714157000, &#x27;id&#x27;: &#x27;e4606ddb-8e63-4822-8be9-4698bb14174c&#x27;, &#x27;bank_transaction_id&#x27;: &#x27;325795572402&#x27;, &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;failure_desc&#x27;: None, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;network&#x27;: &#x27;MATIC&#x27;, &#x27;crypto_wallet_address&#x27;: &#x27;0x466fA637cEB624F9d14fC470c509a818410768FD&#x27;, &#x27;crypto_amount&#x27;: &#x27;27.05000000&#x27;, </code><code><strong>&#x27;status&#x27;: &#x27;ONRAMP_COMPLETED&#x27;, &#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;</strong></code><code>, &#x27;user_id&#x27;: &#x27;11030590-8f27-4325-8db6-c3bb38ba4bf3&#x27;}</code></td></tr><tr id="b9f30d22-4a5a-4629-98a9-dfb611abb6bd"><td id="{hY&lt;" class=""><code><strong>&#x27;COMPLETED&#x27;</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered when the crypto withdrawal to client’s specified wallet address in completed</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;source_id&#x27;: None, &#x27;tag&#x27;: None, &#x27;exchange_rate&#x27;: &#x27;84.99000000&#x27;, &#x27;failure_code&#x27;: None, &#x27;fiat_amount&#x27;: &#x27;2299.00000000&#x27;, &#x27;created_at&#x27;: 1694714157000, &#x27;id&#x27;: &#x27;e4606ddb-8e63-4822-8be9-4698bb14174c&#x27;, &#x27;bank_transaction_id&#x27;: &#x27;325795572402&#x27;, &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;failure_desc&#x27;: None, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;network&#x27;: &#x27;MATIC&#x27;, &#x27;crypto_wallet_address&#x27;: &#x27;0x466fA637cEB624F9d14fC470c509a818410768FD&#x27;, &#x27;crypto_amount&#x27;: &#x27;27.05000000&#x27;, </code><code><strong>&#x27;status&#x27;: &#x27;COMPLETED&#x27;, &#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;</strong></code><code>, &#x27;user_id&#x27;: &#x27;11030590-8f27-4325-8db6-c3bb38ba4bf3&#x27;, ‘txn_hash’: ‘0x8bc46443e1bca3f32163d193466f216d2cc774093b8280483529b8c39957e53b’}</code></td></tr><tr id="31f15b68-89a5-4e58-9ece-2a643ed3f0be"><td id="{hY&lt;" class=""><code><strong>&#x27;FAILED&#x27;</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered when user’s payment could not be found</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;failure_code&#x27;: &#x27;ONRAMP_FAILED&#x27;, &#x27;created_at&#x27;: 1694631289000, &#x27;exchange_rate&#x27;: &#x27;84.99000000&#x27;, &#x27;fiat_amount&#x27;: &#x27;300.00000000&#x27;, &#x27;tag&#x27;: None, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;network&#x27;: &#x27;MATIC&#x27;, &#x27;source_id&#x27;: None, &#x27;failure_desc&#x27;: &#x27;Payment not received from the user&#x27;, </code><code><strong>&#x27;status&#x27;: &#x27;FAILED&#x27;,</strong></code><code> &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;crypto_wallet_address&#x27;: &#x27;0x9e706548D4443E0EdEa9a1B47AF251Ec0FF09B36&#x27;, &#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;crypto_amount&#x27;: &#x27;3.53000000&#x27;, &#x27;id&#x27;: &#x27;1b824d4e-f5e5-4313-aa27-9ed67ed3d937&#x27;, </code><code><strong>&#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;</strong></code><code>, &#x27;user_id&#x27;: &#x27;4924280a-c703-47f2-a82d-78567b57cedc&#x27;}</code></td></tr><tr id="8b98ff62-1ee4-4d61-890e-d34ff8e98566"><td id="{hY&lt;" class=""><code><strong>&#x27;ONRAMP_INCONSISTENT&#x27;</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered when a payment with different amount is found for the user.</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;crypto_amount&#x27;: &#x27;0.57647100&#x27;, &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;created_at&#x27;: 1702202538000, &#x27;crypto_wallet_address&#x27;: &#x27;0x7ba0FF36f3bB47A0Bffd79D322CC71cFC5ddec92&#x27;, &#x27;fiat_amount&#x27;: &#x27;49.00000000&#x27;, &#x27;status&#x27;: </code><code><strong>&#x27;ONRAMP_INCONSISTENT&#x27;</strong></code><code>, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;failure_code&#x27;: None, &#x27;failure_desc&#x27;: None, &#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;tag&#x27;: None, &#x27;bank_transaction_id&#x27;: &#x27;334463178476&#x27;, &#x27;source_id&#x27;: None, &#x27;network&#x27;: &#x27;MATIC&#x27;, &#x27;exchange_rate&#x27;: &#x27;85.00000000&#x27;, &#x27;id&#x27;: &#x27;adedaad8-ed8d-4f9d-9241-3e0eef33f704&#x27;, &#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;, &#x27;user_id&#x27;: &#x27;603da946-508a-412d-961a-393cbc65714b&#x27;}</code></td></tr><tr id="cfe4c1d5-c27b-4eb1-bd79-5f24921989e7"><td id="{hY&lt;" class=""><code><strong>&#x27;REFUND_COMPLETED&#x27;</strong></code></td><td id="MQF&gt;" class="" style="width:335px">Triggered when user’s deposited amount is refunded.</td><td id="&gt;GeN" class="" style="width:589px"><code>{&#x27;bank_transaction_id&#x27;: &#x27;334463178476&#x27;, &#x27;status&#x27;: </code><code><strong>&#x27;REFUND_COMPLETED&#x27;</strong></code><code>, &#x27;created_at&#x27;: 1702202538000, &#x27;failure_desc&#x27;: None, &#x27;crypto_amount&#x27;: &#x27;0.57647100&#x27;, &#x27;payment_method&#x27;: &#x27;upi_transfer&#x27;, &#x27;crypto_wallet_address&#x27;: &#x27;0x7ba0FF36f3bB47A0Bffd79D322CC71cFC5ddec92&#x27;, &#x27;source_id&#x27;: None, &#x27;id&#x27;: &#x27;adedaad8-ed8d-4f9d-9241-3e0eef33f704&#x27;, &#x27;fiat_amount&#x27;: &#x27;49.00000000&#x27;, &#x27;exchange_rate&#x27;: &#x27;85.00000000&#x27;, &#x27;tag&#x27;: None, &#x27;failure_code&#x27;: None, &#x27;crypto_symbol&#x27;: &#x27;USDT&#x27;, &#x27;network&#x27;: &#x27;MATIC&#x27;, &#x27;fiat_symbol&#x27;: &#x27;INR&#x27;, &#x27;event&#x27;: &#x27;CRYPTO_BUY&#x27;, &#x27;user_id&#x27;: &#x27;603da946-508a-412d-961a-393cbc65714b&#x27;}</code></td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fbbf634d-df58-4284-b683-62e2123dbbc1"><div style="font-size:1.5em"><span class="icon">❓</span></div><div style="width:100%">The webhooks needs to be manually added by the client using their API endpoints</div></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">SDK Events</summary><div class="indented"><p id="d6cc5a0e-3115-4407-8c21-abf2dd106907" class="">The client can received by the client from the SDK to get status of user actions as given below:</p><table id="31d1cb3e-0288-4990-8d33-d5189c9c60e8" class="simple-table"><thead class="simple-table-header"><tr id="c0979da9-30ce-47c5-a874-236c126efb1f"><th id="Hvg?" class="simple-table-header-color simple-table-header">Event</th><th id="}:ZV" class="simple-table-header-color simple-table-header" style="width:464px">Description</th><th id="]ryD" class="simple-table-header-color simple-table-header" style="width:430px">Sample Value</th></tr></thead><tbody><tr id="954a5db8-192a-44ac-bd71-50f059806b2f"><td id="Hvg?" class=""><code>KYC_STATUS</code></td><td id="}:ZV" class="" style="width:464px">Triggered when user completes their KYC</td><td id="]ryD" class="" style="width:430px"><code>{<br/>  event: &quot;KYC_STATUS&quot;,<br/>  level: &quot;INFO&quot;,<br/>  params: { status: &quot;COMPLETED&quot; }<br/>}<br/></code></td></tr><tr id="aac2889c-5c6a-4238-8475-7669cbb05334"><td id="Hvg?" class=""><code>ORDER_CREATED</code></td><td id="}:ZV" class="" style="width:464px">Triggered when an order is created</td><td id="]ryD" class="" style="width:430px"><code>{<br/>  event: &quot;ORDER_CREATED&quot;,<br/>  level: &quot;INFO&quot;,<br/>  params: { order_id : &quot;order_id&quot; }<br/>}<br/></code></td></tr><tr id="6ff1b3d7-19f3-4e54-bbcf-ca81dd3e8017"><td id="Hvg?" class=""><code>ORDER_UPDATED</code></td><td id="}:ZV" class="" style="width:464px">Triggered when an order is updated, generally when a user updates their UTR manually.</td><td id="]ryD" class="" style="width:430px"><code>{<br/>  event: &quot;ORDER_UPDATED&quot;,<br/>  level: &quot;INFO&quot;,<br/>  params: { order_id : &quot;order_id&quot; }<br/>}<br/></code></td></tr><tr id="513eca27-f22c-4b82-85d0-20f0914f67d6"><td id="Hvg?" class=""><code>UPI_INTENT</code></td><td id="}:ZV" class="" style="width:464px">Triggered when user attempts to pay via upi intent. url in payment can be used to trigger the intent url in cases where it doesn’t automatically get triggered.<br/><br/></td><td id="]ryD" class="" style="width:430px"><code>{<br/>  event: &quot;UPI_INTENT&quot;,<br/>  level: &quot;INFO&quot;,<br/>  params: { url : &quot;intent_url&quot; }<br/>}<br/></code></td></tr><tr id="35c94768-ffea-4b5e-9df3-800786ab7d2d"><td id="Hvg?" class=""><code>BACK</code></td><td id="}:ZV" class="" style="width:464px">When user clicks back button in saber</td><td id="]ryD" class="" style="width:430px"><code>{<br/>  event: &quot;BACK&quot;,<br/>  level: &quot;INFO&quot;,<br/>}<br/></code></td></tr><tr id="ab061e43-6bbe-4f55-b4ae-7ab8f3d29e9e"><td id="Hvg?" class=""><code>SUCCESS</code></td><td id="}:ZV" class="" style="width:464px">Called when transaction is completed</td><td id="]ryD" class="" style="width:430px"><code>{<br/>  event: &quot;SUCCESS&quot;,<br/>  level: &quot;INFO&quot;,<br/>  params: {<br/>    crypto_amount: cryptoAmount,<br/>    transaction_id: transactionID,<br/>    status: status,<br/>  },<br/>}<br/></code></td></tr></tbody></table></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">KYC Sharing</summary><div class="indented"><p id="c0ba192c-3825-461f-b1dd-fea751f506b5" class="">If the user has already completed KYC on client’s platform, the same data can be shared without the need for re-KYC. The steps are as follows:</p><figure id="4315ca05-2c2e-49ce-b433-c408cd1dce77" class="image"><a href="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/Onramp_SDK_and_KYC.png"><img style="width:1248px" src="Saber%20Onramp%20SDK%20Docs%20b1f4f86d0fd14b8d8f3542dbae77561e/Onramp_SDK_and_KYC.png"/></a></figure><p id="fdd4628d-5488-46d0-a0de-f17c964473ae" class="">The existing KYC data of user can be shared with Mudrex using this API Endpoint</p><table id="615448fd-ea6e-44ae-8c44-a31abe180397" class="simple-table"><thead class="simple-table-header"><tr id="65d01a41-b115-45d7-b62d-c4f0600b217f"><th id="vmUh" class="simple-table-header-color simple-table-header" style="width:146px"><strong>Method</strong></th><th id="KKqu" class="simple-table-header-color simple-table-header" style="width:528.484375px"><strong>URL</strong></th></tr></thead><tbody><tr id="51b3438d-a64a-42c2-9cb9-050448e8b9be"><td id="vmUh" class="" style="width:146px"><code><strong>POST</strong></code></td><td id="KKqu" class="" style="width:528.484375px">https://mudrex.com/api/v1/user/client_user/kyc</td></tr></tbody></table><table id="9d5bf459-cca3-4162-b080-f19a18c2df83" class="simple-table"><thead class="simple-table-header"><tr id="c42e017f-b88f-4efc-9b24-1300d97e2cf1"><th id="Of&lt;]" class="simple-table-header-color simple-table-header"><strong>Headers</strong></th><th id="k_\W" class="simple-table-header-color simple-table-header" style="width:374px">Description</th><th id="]Mok" class="simple-table-header-color simple-table-header"><strong>Values</strong></th></tr></thead><tbody><tr id="1c6ac311-d2e9-497f-a7e1-75eb2055d976"><td id="Of&lt;]" class=""><code>X-Timestamp</code></td><td id="k_\W" class="" style="width:374px">Timestamp used to generate the secret</td><td id="]Mok" class="">string</td></tr><tr id="44f9a39f-dd09-40d9-8d6e-d1870dc06ab1"><td id="Of&lt;]" class=""><code>X-Client-Id</code></td><td id="k_\W" class="" style="width:374px">Client ID provided by Mudrex</td><td id="]Mok" class="">string</td></tr><tr id="0c733547-648d-472d-831a-2ebeb5f23c45"><td id="Of&lt;]" class=""><code>X-Secret-Key</code></td><td id="k_\W" class="" style="width:374px">The secret key generated in the first step</td><td id="]Mok" class="">string</td></tr><tr id="ce83d1d0-1ef4-484f-83b4-49bd9ae8ca4a"><td id="Of&lt;]" class=""><code>X-Request-Id</code></td><td id="k_\W" class="" style="width:374px">For client reference</td><td id="]Mok" class=""></td></tr><tr id="76139dc7-4da1-4013-b11f-e622295f033a"><td id="Of&lt;]" class=""><code>X-User-Id</code></td><td id="k_\W" class="" style="width:374px">UUID of the user</td><td id="]Mok" class="">string</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7aa01fce-1a0c-4c89-a594-79fe145c1eb1"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><strong>In the above endpoint,</strong><ol type="1" id="a68110eb-f52c-403a-b1ff-38a99ecaef35" class="numbered-list" start="1"><li>legal_name, poi (PAN number), poa (Aadhar number) is required (the rest are optional)</li></ol><ol type="1" id="eb13b770-1f01-423e-b594-503876d7e98e" class="numbered-list" start="2"><li>dob should be in dd-mm-yyyy format</li></ol><ol type="1" id="e18932f0-6da6-4e43-a440-e5a55d0415fa" class="numbered-list" start="3"><li>gender must be either M or F</li></ol></div></figure><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Example</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b0517a31-3a33-48ce-846a-afcc3933ad3d" class="code"><code class="language-JavaScript">curl --location &#x27;https://mudrex.com/api/v1/user/client_user/kyc&#x27; \
+--header &#x27;X-Timestamp: 1709120158&#x27; \
+--header &#x27;X-Client-Id: 18e963ea-39fd-4a1b-b1e6-decbfe791d31&#x27; \
+--header &#x27;X-Secret-Key: &lt;key&gt;&#x27; \
+--header &#x27;X-Request-Id: 123456789876&#x27; \
+--header &#x27;X-User-Id: cbbb71b2-0dea-40d1-a7df-3bcdd62d1caa&#x27; \
+--header &#x27;Content-Type: application/json&#x27; \
+--data-raw &#x27;{
+   &quot;legal_name&quot;:&quot;KARTIKEY AGARWAL&quot;, 
+   &quot;poi&quot;:&quot;AWSPP1410L&quot;,    
+   &quot;poa&quot;:&quot;500100111232&quot;, 
+   &quot;dob&quot;:&quot;31-01-2000&quot;,   
+   &quot;gender&quot;:&quot;M&quot;,      
+   &quot;income&quot;:&quot;1,00,000-5,00,000&quot;,  
+   &quot;email&quot;:&quot;kartikey@mudrex.com&quot;, 
+   &quot;phone&quot;:&quot;8553383091&quot;, 
+   &quot;occupation&quot;:&quot;professional&quot;, 
+   &quot;address&quot;:&quot;my address is a addreess&quot; 
+}&#x27;
+</code></pre></div></details></div></details><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5a06a546-6699-44a5-9da0-8d380446cf43"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%">Link to our Postman collection can also be found here: <a href="https://documentation.mudrex.com/">Postman</a></div></figure><p id="5addd767-4a46-4e98-b0da-06b6cbd4104d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
